@@ -22,7 +22,7 @@
       ]
     },
     { label: 'Spiritueux',   href: 'spiritueux.html' },
-    { label: '🍽 Notre Menu', href: 'menu/', cta: true },
+    { label: '🍽 Notre Menu', href: 'menu.html', cta: true },
   ];
 
   /* ── Icônes SVG inline ───────────────────────────────────────── */
@@ -169,7 +169,7 @@
           </div>
 
           <div class="footer-menu-cta">
-            <a class="btn-primary" href="menu/">🍽&nbsp;Voir notre menu</a>
+            <a class="btn-primary" href="menu.html">🍽&nbsp;Voir notre menu</a>
           </div>
 
           <div class="footer-copyright">
