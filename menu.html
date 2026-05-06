@@ -107,13 +107,15 @@
 
     .cat-tabs-inner {
       display: flex;
-      justify-content: center;
       gap: 0.5rem;
       padding: 0.875rem 1rem;
       overflow-x: auto;
       scrollbar-width: none;
       max-width: 72rem;
       margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .cat-tabs-inner { justify-content: center; }
     }
     .cat-tabs-inner::-webkit-scrollbar { display: none; }
 
@@ -298,10 +300,17 @@
     }
 
     .sauces-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    @media (min-width: 768px) {
+      .sauces-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 2rem;
+      }
     }
 
     .sauce-item {
