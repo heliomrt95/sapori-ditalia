@@ -107,6 +107,7 @@
 
     .cat-tabs-inner {
       display: flex;
+      justify-content: center;
       gap: 0.5rem;
       padding: 0.875rem 1rem;
       overflow-x: auto;
@@ -297,9 +298,10 @@
     }
 
     .sauces-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 2rem;
     }
 
     .sauce-item {
