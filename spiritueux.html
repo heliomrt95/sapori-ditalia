@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vins & Spiritueux — Sapori d'Italia</title>
+  <meta name="description" content="Vins italiens, Prosecco, Limoncello, Grappa, Amaretto, Birra Moretti… La sélection de vins et spiritueux italiens de Sapori d'Italia à Biscarrosse-Plage.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+
+    /* ── UTILITAIRES PAGE ───────────────────────────────────────── */
+
+    .page-section {
+      padding: 4rem 1.25rem;
+    }
+
+    .section-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-primary);
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.3rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    .section-divider.mx-auto { margin-left: auto; margin-right: auto; }
+    .text-center { text-align: center; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.5rem);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible  { opacity: 1; transform: translateY(0); }
+    .reveal-d1       { transition-delay: 0.07s; }
+    .reveal-d2       { transition-delay: 0.14s; }
+    .reveal-d3       { transition-delay: 0.21s; }
+
+
+    /* ── PAGE HERO ──────────────────────────────────────────────── */
+
+    .page-hero {
+      background: linear-gradient(160deg, var(--color-white) 0%, var(--color-cream) 100%);
+      padding: 5rem 1.25rem 4rem;
+      text-align: center;
+      border-bottom: 2px solid var(--color-border-sm);
+    }
+
+    .page-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .page-hero-eyebrow::before,
+    .page-hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .page-hero-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero-title span { color: var(--color-primary); }
+
+    .page-hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+      color: var(--color-muted);
+      font-style: italic;
+      max-width: 40rem;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+
+    /* ── INTRO SECTION ──────────────────────────────────────────── */
+
+    .intro-section {
+      background: var(--color-cream);
+    }
+
+    .intro-lead {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
+      color: var(--color-dark-text);
+      line-height: 1.85;
+    }
+
+
+    /* ── SOUS-NAV CATÉGORIES ────────────────────────────────────── */
+
+    .spir-subnav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 0;
+    }
+
+    .spir-subnav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1.125rem;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-primary);
+      transition: background 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .spir-subnav a:hover {
+      background: var(--color-cream);
+      border-color: var(--color-primary);
+    }
+
+
+    /* ── SECTIONS PRODUITS ──────────────────────────────────────── */
+
+    .spir-section {
+      scroll-margin-top: calc(var(--header-height) + 1rem);
+    }
+
+    .spir-section:nth-child(odd)  { background: var(--color-white); }
+    .spir-section:nth-child(even) { background: var(--color-cream); }
+
+    .spir-section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    .spir-section-icon {
+      font-size: 2.25rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .spir-section-header h2 {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+    }
+
+    .spir-section-header h2 span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+
+
+    /* ── GRILLE PRODUITS ────────────────────────────────────────── */
+
+    .spir-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .spir-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      padding: 1.5rem;
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .spir-section:nth-child(even) .spir-card { background: var(--color-white); }
+    .spir-section:nth-child(odd)  .spir-card { background: var(--color-cream); }
+
+    .spir-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-color: var(--color-primary);
+    }
+
+    .spir-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .spir-card-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .spir-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.5625rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .spir-badge--vin {
+      background: rgba(127, 29, 29, 0.08);
+      color: #7f1d1d;
+      border: 1px solid rgba(127, 29, 29, 0.2);
+    }
+
+    .spir-badge--biere {
+      background: rgba(161, 98, 7, 0.1);
+      color: #a16207;
+      border: 1px solid rgba(161, 98, 7, 0.25);
+    }
+
+    .spir-badge--liqueur {
+      background: rgba(212, 165, 116, 0.15);
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .spir-badge--sans-alcool {
+      background: rgba(22, 163, 74, 0.08);
+      color: #16a34a;
+      border: 1px solid rgba(22, 163, 74, 0.2);
+    }
+
+    .spir-card-desc {
+      font-family: var(--font-serif);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+    @media (min-width: 640px) {
+      .spir-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .page-section  { padding: 5rem 2rem; }
+      .page-hero     { padding: 6rem 2rem 5rem; }
+      .spir-grid     { grid-template-columns: repeat(3, 1fr); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PAGE HERO
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="page-hero" aria-labelledby="hero-title">
+    <p class="page-hero-eyebrow" aria-hidden="true">Sapori d'Italia</p>
+    <h1 class="page-hero-title" id="hero-title">
+      Vins & <span>Spiritueux</span>
+    </h1>
+    <p class="page-hero-subtitle">
+      L'héritage du vin italien remonte à 4&nbsp;000 ans — les Grecs appelaient les
+      colonies italiennes <em>Oenotria</em>, la terre du vin.
+    </p>
+  </section>
+
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         INTRO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="intro-section page-section" aria-labelledby="intro-title">
+      <div class="section-inner">
+
+        <span class="section-tag reveal">Notre cave</span>
+        <h2 class="section-title reveal reveal-d1" id="intro-title">
+          L'Italie, terre du vin
+        </h2>
+        <div class="section-divider reveal reveal-d2"></div>
+
+        <p class="intro-lead reveal reveal-d2">
+          Le vin constitue une composante culturelle majeure de la vie italienne,
+          favorisé par le sol, le soleil méditerranéen et la proximité des montagnes.
+          Des Étrusques aux Romains, la fabrication du vin a été élevée au rang
+          de science. Aujourd'hui encore, chaque région italienne produit des vins
+          uniques qui reflètent leur terroir. Notre sélection, des vins tranquilles
+          aux mousseux, des liqueurs artisanales à la bière authentique, vous invite
+          à cette richesse.
+        </p>
+
+        <nav class="spir-subnav reveal" aria-label="Catégories spiritueux">
+          <a href="#vins">🍷 Vins</a>
+          <a href="#mousseux">🥂 Mousseux</a>
+          <a href="#liqueurs">🍋 Liqueurs</a>
+          <a href="#biere">🍺 Bière</a>
+          <a href="#aperitifs">🍊 Apéritifs</a>
+        </nav>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         VINS
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="vins" class="spir-section page-section" aria-labelledby="title-vins">
+      <div class="section-inner">
+
+        <div class="spir-section-header reveal">
+          <span class="spir-section-icon" aria-hidden="true">🍷</span>
+          <h2><span>Vins italiens</span>Vins tranquilles</h2>
+        </div>
+
+        <div class="spir-grid">
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Granaio Chianti Classico</h3>
+              <span class="spir-badge spir-badge--vin">Toscane</span>
+            </div>
+            <p class="spir-card-desc">De couleur rouge rubis, au parfum intense et complexe — notes fruitées, vanille, iris et violette. Sec en bouche avec base de confiture et d'amande.</p>
+          </article>
+          <article class="spir-card reveal reveal-d2">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Rosé dell'Estate</h3>
+              <span class="spir-badge spir-badge--vin">Vénétie</span>
+            </div>
+            <p class="spir-card-desc">Rosé de Vénétie à la couleur rubis clair — parfum très frais et fragrant, senteurs de cerise et de violette. Léger et fruité en bouche.</p>
+          </article>
+          <article class="spir-card reveal reveal-d3">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Lambrusco Cavicchioli</h3>
+              <span class="spir-badge spir-badge--vin">Émilie</span>
+            </div>
+            <p class="spir-card-desc">Vin pétillant d'Émilie-Romagne et de Lombardie, décliné en rouge et en rosé — festif, fruité, légèrement sucré.</p>
+          </article>
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Lambrusco Rosato Eretico</h3>
+              <span class="spir-badge spir-badge--vin">Rosé</span>
+            </div>
+            <p class="spir-card-desc">Couleur rose pâle à la mousse rosée — bouquet frais, délicat et fruité avec des parfums de violette. Saveur fraîche et agréablement souple.</p>
+          </article>
+          <article class="spir-card reveal reveal-d2">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Moscato Scanavino</h3>
+              <span class="spir-badge spir-badge--vin">Piémont</span>
+            </div>
+            <p class="spir-card-desc">Robe jaune pâle au perlage fin et persistant, notes de pêche et légèrement florales — équilibre parfait entre arômes de fruits et de fleurs.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MOUSSEUX & PROSECCO
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="mousseux" class="spir-section page-section" aria-labelledby="title-mousseux">
+      <div class="section-inner">
+
+        <div class="spir-section-header reveal">
+          <span class="spir-section-icon" aria-hidden="true">🥂</span>
+          <h2><span>Spumanti</span>Mousseux & Prosecco</h2>
+        </div>
+
+        <div class="spir-grid">
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Prosecco Extra Dry Bolla</h3>
+              <span class="spir-badge spir-badge--vin">Trévise</span>
+            </div>
+            <p class="spir-card-desc">L'un des plus fameux Spumanti d'Italie — raisins Glera des zones historiques de Trévise. Robe jaune paille brillante, mousse fine et persistante, acidité exaltant la fraîcheur aromatique. Idéal à l'apéritif avec poissons et fruits de mer.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LIQUEURS & DIGESTIFS
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="liqueurs" class="spir-section page-section" aria-labelledby="title-liqueurs">
+      <div class="section-inner">
+
+        <div class="spir-section-header reveal">
+          <span class="spir-section-icon" aria-hidden="true">🍋</span>
+          <h2><span>Digestifs & douceurs</span>Liqueurs artisanales</h2>
+        </div>
+
+        <div class="spir-grid">
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Amaretto Disaronno</h3>
+              <span class="spir-badge spir-badge--liqueur">Spécialité</span>
+            </div>
+            <p class="spir-card-desc">Spécialité italienne à la renommée mondiale — liqueur aux parfums d'amande fraîche, douce et enveloppante.</p>
+          </article>
+          <article class="spir-card reveal reveal-d2">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Limoncello di Sorrento</h3>
+              <span class="spir-badge spir-badge--liqueur">Sorrento</span>
+            </div>
+            <p class="spir-card-desc">Issu d'une sélection minutieuse de citrons à l'écorce épaisse et parfumée de Sorrento — le zeste produit une liqueur qui capture tous les arômes et saveurs méditerranéennes.</p>
+          </article>
+          <article class="spir-card reveal reveal-d3">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Crema Mandorla</h3>
+              <span class="spir-badge spir-badge--liqueur">Sicile</span>
+            </div>
+            <p class="spir-card-desc">Vin de dessert sicilien des Cantines Pellegrino, élaboré à base de Marsala et d'amandes — plus alcoolisé qu'un vin classique, idéal en fin de repas.</p>
+          </article>
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Babà Rhum Sorrento</h3>
+              <span class="spir-badge spir-badge--liqueur">Naples</span>
+            </div>
+            <p class="spir-card-desc">Fabriqué artisanalement selon une recette riche de 50 ans d'histoire — le babà est le dessert emblématique de la tradition napolitaine, ici en version liqueur.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BIÈRE
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="biere" class="spir-section page-section" aria-labelledby="title-biere">
+      <div class="section-inner">
+
+        <div class="spir-section-header reveal">
+          <span class="spir-section-icon" aria-hidden="true">🍺</span>
+          <h2><span>Birra italiana</span>Bière</h2>
+        </div>
+
+        <div class="spir-grid">
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Birra Moretti « L'Autentica »</h3>
+              <span class="spir-badge spir-badge--biere">Depuis 1859</span>
+            </div>
+            <p class="spir-card-desc">Bière traditionnelle fabriquée depuis 1859 avec les meilleures matières premières et un mélange spécial de houblon — un goût et un parfum uniques, avec un amer parfaitement équilibré.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         APÉRITIFS
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="aperitifs" class="spir-section page-section" aria-labelledby="title-aperitifs">
+      <div class="section-inner">
+
+        <div class="spir-section-header reveal">
+          <span class="spir-section-icon" aria-hidden="true">🍊</span>
+          <h2><span>L'heure de l'apéro</span>Apéritifs</h2>
+        </div>
+
+        <div class="spir-grid">
+          <article class="spir-card reveal reveal-d1">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Aperol Spritz</h3>
+              <span class="spir-badge spir-badge--liqueur">Classique</span>
+            </div>
+            <p class="spir-card-desc">Long drink à base de vin blanc, d'Aperol et d'eau de Seltz — équilibre parfait de saveurs douces-amères, notes d'orange, d'herbes et d'épices. L'apéritif italien par excellence.</p>
+          </article>
+          <article class="spir-card reveal reveal-d2">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Spritz Luxardo</h3>
+              <span class="spir-badge spir-badge--liqueur">Léger</span>
+            </div>
+            <p class="spir-card-desc">Sa légère teneur en alcool le rend idéal pour des boissons longues et légères — à mélanger avec Prosecco et soda pour un apéritif rafraîchissant.</p>
+          </article>
+          <article class="spir-card reveal reveal-d3">
+            <div class="spir-card-top">
+              <h3 class="spir-card-name">Crodino</h3>
+              <span class="spir-badge spir-badge--sans-alcool">Sans alcool</span>
+            </div>
+            <p class="spir-card-desc">Apéritif sans alcool composé de plus de 30 extraits d'herbes et de fruits — des morceaux d'oranges sucrées et amères révèlent des arômes subtils et équilibrés. Pour profiter de l'heure de l'apéritif sans alcool.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/nav.js"></script>
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

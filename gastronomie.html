@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastronomie — Sapori d'Italia</title>
+  <meta name="description" content="Découvrez toute la sélection de Sapori d'Italia : pâtes fraîches maison et sèches au bronze, pizzas, huiles d'olive Turan & Gialloro, fromages italiens, charcuterie, sauces et caffè — épicerie italienne à Biscarrosse-Plage.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+
+    /* ── UTILITAIRES PAGE ───────────────────────────────────────── */
+
+    .page-section {
+      padding: 4rem 1.25rem;
+    }
+
+    .section-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-primary);
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.3rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.5rem);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible    { opacity: 1; transform: translateY(0); }
+    .reveal-d1         { transition-delay: 0.07s; }
+    .reveal-d2         { transition-delay: 0.14s; }
+    .reveal-d3         { transition-delay: 0.21s; }
+
+
+    /* ── PAGE HERO ──────────────────────────────────────────────── */
+
+    .page-hero {
+      background: linear-gradient(160deg, var(--color-white) 0%, var(--color-cream) 100%);
+      padding: 4rem 1.25rem 3rem;
+      text-align: center;
+      border-bottom: 2px solid var(--color-border-sm);
+    }
+
+    .page-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero-eyebrow::before,
+    .page-hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .page-hero-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.1;
+      margin-bottom: 0.875rem;
+    }
+
+    .page-hero-title span { color: var(--color-primary); }
+
+    .page-hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+
+    /* ── SECTIONS CATÉGORIES ────────────────────────────────────── */
+
+    .cat-section {
+      scroll-margin-top: calc(var(--header-height) + 4.25rem);
+    }
+
+    .cat-section:nth-child(odd)  { background: var(--color-cream); }
+    .cat-section:nth-child(even) { background: var(--color-white); }
+
+    .cat-intro {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      align-items: center;
+    }
+
+    .cat-intro-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: var(--radius-card);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    .cat-intro-text .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .cat-desc {
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      color: var(--color-muted);
+      line-height: 1.8;
+    }
+
+    .prod-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.875rem 1.125rem;
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      font-family: var(--font-serif);
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--color-dark-text);
+      margin-top: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .prod-note-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .cat-cta-box {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border: 2px dashed var(--color-border);
+      border-radius: var(--radius-card);
+      margin-top: 1.75rem;
+    }
+
+    .cat-cta-box p {
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      color: var(--color-muted);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+
+    /* ── GRILLE PRODUITS ────────────────────────────────────────── */
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .prod-card {
+      padding: 1.25rem;
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cat-section:nth-child(odd)  .prod-card { background: var(--color-white); }
+    .cat-section:nth-child(even) .prod-card { background: var(--color-cream); }
+
+    .prod-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+      border-color: var(--color-primary);
+    }
+
+    .prod-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .prod-emoji {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .prod-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.5625rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .prod-badge--maison {
+      background: rgba(212, 165, 116, 0.15);
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .prod-badge--aop {
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .prod-badge--spec {
+      background: rgba(220, 38, 38, 0.08);
+      color: #dc2626;
+      border: 1px solid rgba(220, 38, 38, 0.2);
+    }
+
+    .prod-badge--bronze {
+      background: rgba(146, 64, 14, 0.1);
+      color: #92400e;
+      border: 1px solid rgba(146, 64, 14, 0.2);
+    }
+
+    .prod-name {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.35;
+    }
+
+    .prod-desc {
+      font-family: var(--font-serif);
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+    @media (min-width: 640px) {
+      .prod-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    }
+
+    @media (min-width: 768px) {
+      .cat-intro { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .cat-intro-img { aspect-ratio: 4 / 3; }
+    }
+
+    @media (min-width: 1024px) {
+      .page-section { padding: 5rem 2rem; }
+      .page-hero    { padding: 5rem 2rem 4rem; }
+      .prod-grid    { gap: 1.5rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PAGE HERO
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="page-hero" aria-labelledby="gastro-title">
+    <p class="page-hero-eyebrow" aria-hidden="true">Sapori d'Italia</p>
+    <h1 class="page-hero-title" id="gastro-title">Notre <span>Gastronomie</span></h1>
+    <p class="page-hero-subtitle">L'Italie, terre de gastronomie — une sélection rigoureuse pour éveiller vos sens</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION CATÉGORIES STICKY
+       ═══════════════════════════════════════════════════════════ -->
+  <nav class="category-nav" id="cat-nav" aria-label="Navigation par catégorie">
+    <div class="nav-inner" role="list">
+      <button class="cat-btn active" data-target="pates" role="listitem">Pâtes</button>
+      <button class="cat-btn" data-target="pizzas" role="listitem">Pizzas</button>
+      <button class="cat-btn" data-target="huiles" role="listitem">Huiles</button>
+      <button class="cat-btn" data-target="fromages" role="listitem">Fromages</button>
+      <button class="cat-btn" data-target="charcuterie" role="listitem">Charcuterie</button>
+      <button class="cat-btn" data-target="sauces" role="listitem">Sauces & Épices</button>
+      <button class="cat-btn" data-target="caffe" role="listitem">Caffè e Dolce</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LES PÂTES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="pates" class="cat-section page-section" aria-labelledby="title-pates">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1551183053-bf91798d9f2e?auto=format&fit=crop&w=800&q=80"
+            alt="Pâtes fraîches artisanales" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Fait maison & au bronze</span>
+            <h2 class="section-title" id="title-pates">Les Pâtes</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              Pour comprendre le travail derrière nos pâtes, il faut suivre l'ensemble
+              du processus de fabrication. Nos pâtes sèches sont produites avec des
+              farines 100&nbsp;% lucaniennes, transformées dans un rayon de 10&nbsp;km.
+              Elles passent par filière de bronze, ce qui leur confère une rugosité
+              idéale et une saveur homogène, puis sont séchées lentement sous
+              température et humidité contrôlées.
+            </p>
+            <div class="prod-note">
+              <span class="prod-note-icon" aria-hidden="true">👨‍🍳</span>
+              <span>Pâtes fraîches confectionnées chaque jour sur place par nos équipes — pâtes sèches au bronze de la ferme Saluzzi, Forenza (Basilicate)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍝</span>
+              <span class="prod-badge prod-badge--maison">Fraîches</span>
+            </div>
+            <h3 class="prod-name">Tagliatelles fraîches</h3>
+            <p class="prod-desc">Confectionnées sur place chaque matin avec farine italienne et œufs frais — larges, soyeuses, parfaites avec un ragù.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍝</span>
+              <span class="prod-badge prod-badge--maison">Fraîches</span>
+            </div>
+            <h3 class="prod-name">Pappardelle fraîches</h3>
+            <p class="prod-desc">Grands rubans dorés, façonnés sur place, idéaux avec les sauces généreuses à base de viande ou de champignons.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍝</span>
+              <span class="prod-badge prod-badge--bronze">Bronze</span>
+            </div>
+            <h3 class="prod-name">Casarecce au bronze</h3>
+            <p class="prod-desc">Pâtes sèches courtes roulées, étirées au bronze à séchage lent — consistance ferme, excellente résistance à la cuisson.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍝</span>
+              <span class="prod-badge prod-badge--bronze">Bronze</span>
+            </div>
+            <h3 class="prod-name">Spaghetti au bronze</h3>
+            <p class="prod-desc">Filière bronze, séchage lent, farine 100&nbsp;% lucanienne — une texture élastique pour une carbonara ou une vongole authentique.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥟</span>
+              <span class="prod-badge prod-badge--maison">Fraîches</span>
+            </div>
+            <h3 class="prod-name">Ravioli ricotta-épinards</h3>
+            <p class="prod-desc">Farce généreuse à la ricotta fraîche et aux épinards — au beurre de sauge ou en sauce tomate.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥟</span>
+              <span class="prod-badge prod-badge--spec">Spécialité</span>
+            </div>
+            <h3 class="prod-name">Ravioli burrata-citron</h3>
+            <p class="prod-desc">Notre création signature : une farce crémeuse à la burrata parfumée au zeste de citron de Sicile.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥟</span>
+              <span class="prod-badge prod-badge--maison">Fraîches</span>
+            </div>
+            <h3 class="prod-name">Tortellini</h3>
+            <p class="prod-desc">Petits chapeaux farcis à la viande ou à la ricotta, à déguster en bouillon ou à la crème.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫕</span>
+              <span class="prod-badge prod-badge--maison">Fraîches</span>
+            </div>
+            <h3 class="prod-name">Lasagnes bolognaise</h3>
+            <p class="prod-desc">Feuilles fraîches avec ragù maison mijoté longuement et béchamel artisanale — le plat du dimanche.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LES PIZZAS
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="pizzas" class="cat-section page-section" aria-labelledby="title-pizzas">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+            alt="Pizza artisanale italienne" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Légère & Croustillante</span>
+            <h2 class="section-title" id="title-pizzas">Les Pizzas</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              La gastronomie fait partie intégrante de la vie italienne, c'est un art
+              de vivre à part entière. Nos pizzas sont réalisées avec des ingrédients
+              italiens sélectionnés et des pâtes lentement levées — de la Pinsa Romana
+              légère et aérée à la Margherita classique.
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+              <span class="prod-badge prod-badge--spec">Signature</span>
+            </div>
+            <h3 class="prod-name">Pinsa Romana</h3>
+            <p class="prod-desc">La pizza légère et aérée à la romaine — pâte à base de farine de riz et de soja pour une digestion parfaite.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+            </div>
+            <h3 class="prod-name">Margherita</h3>
+            <p class="prod-desc">Tomate San Marzano, fior di latte et basilic frais — la simplicité élevée au rang d'art.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+            </div>
+            <h3 class="prod-name">Diavola</h3>
+            <p class="prod-desc">Salami piccante, tomate et mozzarella — pour les amateurs de saveurs caractérielles et généreuses.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+            </div>
+            <h3 class="prod-name">Capricciosa</h3>
+            <p class="prod-desc">Jambon cuit, champignons, artichaut et olives — la pizza de ceux qui veulent tout goûter.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+            </div>
+            <h3 class="prod-name">4 Fromages</h3>
+            <p class="prod-desc">Mozzarella, gorgonzola, taleggio et parmigiano — un voyage fromager en une seule bouchée.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍕</span>
+              <span class="prod-badge prod-badge--spec">Saison</span>
+            </div>
+            <h3 class="prod-name">Pizzas du marché</h3>
+            <p class="prod-desc">Créations saisonnières selon les arrivages — burrata, truffe, figues & gorgonzola, roquette & prosciutto…</p>
+          </article>
+        </div>
+
+        <div class="cat-cta-box reveal">
+          <p>Retrouvez la carte complète de nos pizzas et pinse sur notre menu en ligne</p>
+          <a class="btn-primary" href="/menu/">🍽&nbsp;Voir la carte complète</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LES HUILES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="huiles" class="cat-section page-section" aria-labelledby="title-huiles">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=800&q=80"
+            alt="Huile d'olive extra vierge italienne" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Première pression à froid</span>
+            <h2 class="section-title" id="title-huiles">Les Huiles</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              Pour les huiles de base et aromatisées, nous collaborons depuis plusieurs
+              années avec les maisons <strong style="color:var(--color-text)">Turan et Gialloro</strong>,
+              fabricants incontournables de l'huile en Italie. Nous proposons également
+              notre propre production, issue des variétés Ogliarola del Bradano et Cima
+              di Melfi, cultivées en intercalaire avec Leccino Toscano, Coratina et
+              Peranzana — pressées mécaniquement dans notre moulin partiellement solaire.
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫒</span>
+              <span class="prod-badge prod-badge--spec">Production propre</span>
+            </div>
+            <h3 class="prod-name">Huile extra vierge Saluzzi</h3>
+            <p class="prod-desc">Notre propre production : Ogliarola del Bradano et Cima di Melfi, pressées mécaniquement à froid dans notre moulin solaire de Forenza.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫒</span>
+              <span class="prod-badge prod-badge--spec">Turan & Gialloro</span>
+            </div>
+            <h3 class="prod-name">Huile extra vierge sélection</h3>
+            <p class="prod-desc">Huile d'olive de première qualité, pressée uniquement par procédé mécanique. Disponible de 250&nbsp;ml à 5&nbsp;L.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍄</span>
+              <span class="prod-badge prod-badge--spec">Aromatisée</span>
+            </div>
+            <h3 class="prod-name">Huile à la truffe</h3>
+            <p class="prod-desc">Une huile délicatement parfumée à la truffe noire — quelques gouttes suffisent pour sublimer une pasta.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🌿</span>
+              <span class="prod-badge prod-badge--spec">Aromatisée</span>
+            </div>
+            <h3 class="prod-name">Huile au basilic</h3>
+            <p class="prod-desc">Basilic genovese infusé dans une huile extra vierge de première qualité — l'été en bouteille.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍋</span>
+              <span class="prod-badge prod-badge--spec">Aromatisée</span>
+            </div>
+            <h3 class="prod-name">Huile au citron de Sicile</h3>
+            <p class="prod-desc">Écorces de citrons de Sicile macérées à froid — une fraîcheur citronnée incomparable pour les poissons et salades.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🌶️</span>
+              <span class="prod-badge prod-badge--spec">Aromatisée</span>
+            </div>
+            <h3 class="prod-name">Huile au piment</h3>
+            <p class="prod-desc">Un filet de chaleur calabraise pour réveiller pizzas, bruschette et pâtes all'arrabiata.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">💚</span>
+              <span class="prod-badge prod-badge--spec">Bronte</span>
+            </div>
+            <h3 class="prod-name">Huile de pistache de Bronte</h3>
+            <p class="prod-desc">La pistache verte de l'Etna pressée à froid — un produit rare et précieux, douceur et caractère réunis.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LES FROMAGES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="fromages" class="cat-section page-section" aria-labelledby="title-fromages">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1452195100486-9cc7a1b47b74?auto=format&fit=crop&w=800&q=80"
+            alt="Sélection de fromages italiens" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Affinés avec soin</span>
+            <h2 class="section-title" id="title-fromages">Les Fromages</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              Des fromages frais comme la burrata crémeuse aux fromages affinés comme
+              le Parmigiano Reggiano — notre sélection couvre toute la richesse
+              fromagère de la péninsule, des Alpes à la Sicile.
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Vénétie</span>
+            </div>
+            <h3 class="prod-name">Asiago</h3>
+            <p class="prod-desc">Goût jeune et saveur du lait tout juste trait — fond dans la bouche en libérant une note douce et légèrement acidulée.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Gran Riserva</span>
+            </div>
+            <h3 class="prod-name">Gorgonzola Léonardi</h3>
+            <p class="prod-desc">La qualité supérieure Gran Riserva Leonardi — goût et extraordinaire onctuosité, idéal pour événements, apéritifs ou buffets.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Lombardie</span>
+            </div>
+            <h3 class="prod-name">Taleggio</h3>
+            <p class="prod-desc">Fromage lombard au lait de vache, à la texture fondante et aux arômes doux. Meilleur de juillet à octobre.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Filata</span>
+            </div>
+            <h3 class="prod-name">Provolone</h3>
+            <p class="prod-desc">Pâte filée lisse et veloutée, saveur douce légèrement salée, laiteuse et beurrée — adapté aux pizzas et plats italiens.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--aop">AOP</span>
+            </div>
+            <h3 class="prod-name">Grana Padano</h3>
+            <p class="prod-desc">Produit dans la plaine du Pô à partir de lait légèrement écrémé de la traite du jour — grain fin et saveur douce.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--aop">AOP</span>
+            </div>
+            <h3 class="prod-name">Parmigiano Reggiano</h3>
+            <p class="prod-desc">Issu d'une petite zone de production au-dessus de Parme et Reggio d'Émilie — le "roi des fromages", granuleux et intense.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--aop">DOP</span>
+            </div>
+            <h3 class="prod-name">Pecorino Sarde DOP</h3>
+            <p class="prod-desc">Fromage de lait de brebis 100&nbsp;% sarde — goût savoureux et prononcé, pâte granuleuse caractéristique. Le Podda Classico.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--maison">Fraîche</span>
+            </div>
+            <h3 class="prod-name">Mozzarella Trescia</h3>
+            <p class="prod-desc">Tresse de mozzarella tissée à la main, consistance fibreuse, blanche et brillante — nature ou pour parmigiana d'aubergines.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Bufflonne</span>
+            </div>
+            <h3 class="prod-name">Mozzarella di Bufala</h3>
+            <p class="prod-desc">Toute la saveur de la mozzarella italienne exprimée dans le lait de bufflonne — à déguster fraîche et goûteuse.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--spec">Puglia</span>
+            </div>
+            <h3 class="prod-name">Burrata</h3>
+            <p class="prod-desc">Fromage à base de mozzarella et de crème, en boule blanche au cœur crémeux — la reine des fromages frais italiens.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🧀</span>
+              <span class="prod-badge prod-badge--maison">Frais</span>
+            </div>
+            <h3 class="prod-name">Mascarpone Brescia</h3>
+            <p class="prod-desc">Lait de vache pasteurisé et acide citrique — onctueux et polyvalent, en plats salés comme en desserts (tiramisu).</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LA CHARCUTERIE
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="charcuterie" class="cat-section page-section" aria-labelledby="title-charcuterie">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1544025162-d76538c92d0a?auto=format&fit=crop&w=800&q=80"
+            alt="Charcuterie italienne artisanale" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Tradition salumeria</span>
+            <h2 class="section-title" id="title-charcuterie">La Charcuterie</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              L'Italie est la terre des maîtres salaisonniers. De la mortadella bolognaise
+              au jambon truffé, chaque pièce raconte une région, un savoir-faire
+              et une fierté artisanale transmise depuis des générations.
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Bologne</span>
+            </div>
+            <h3 class="prod-name">Mortadella</h3>
+            <p class="prod-desc">Spécialité de Lombardie et d'Émilie-Romagne — viande de porc finement hachée, cuisson lente pour une saveur parfumée et moelleuse.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Calabre</span>
+            </div>
+            <h3 class="prod-name">Pancetta</h3>
+            <p class="prod-desc">Épices calabraises typiques, affinée plus de 70 jours sous température et humidité contrôlées, enroulée et ficelée à mi-vieillissement.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Parme</span>
+            </div>
+            <h3 class="prod-name">Felino</h3>
+            <p class="prod-desc">Porc haché grossièrement, poivre noir en grains, ail mariné au vin blanc — produit depuis deux siècles dans les collines de Parme.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Artisanal</span>
+            </div>
+            <h3 class="prod-name">Padanello</h3>
+            <p class="prod-desc">Saucisson réalisé selon la tradition des maîtres charcutiers de la Plaine du Pô — goût doux et parfum intense.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Légère</span>
+            </div>
+            <h3 class="prod-name">Golfetta</h3>
+            <p class="prod-desc">Le saucisson emblématique le plus vendu en Italie, préparé avec jambons sélectionnés — 60&nbsp;% moins gras que le salami moyen.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Artisanal</span>
+            </div>
+            <h3 class="prod-name">Coppa / Capocollo</h3>
+            <p class="prod-desc">Nuque de porc marinée, tranchée finement pour antipasti, sandwichs ou pizzas — texture fondante et délicate.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Milano</span>
+            </div>
+            <h3 class="prod-name">Salame Milano</h3>
+            <p class="prod-desc">Qualité supérieure au goût intense et texture fondante — la salami lombarde qui se glisse partout.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Douce</span>
+            </div>
+            <h3 class="prod-name">Spianata douce</h3>
+            <p class="prod-desc">Viande de porc maigre finement hachée, en forme plate et allongée — moelleuse et savoureuse, parfaite à l'apéritif.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🌶️</span>
+              <span class="prod-badge prod-badge--spec">Piccante</span>
+            </div>
+            <h3 class="prod-name">Spianata forte</h3>
+            <p class="prod-desc">Subtilement pimentée, moelleuse et douce — le caractère calabrais pour réveiller pizzas et antipasti.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--aop">AOP</span>
+            </div>
+            <h3 class="prod-name">Jambon de Parme</h3>
+            <p class="prod-desc">138 calories pour 100&nbsp;g, élaboré sans additif chimique — douceur et fondant légendaires, tranché à la demande.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Truffé</span>
+            </div>
+            <h3 class="prod-name">Jambon truffé</h3>
+            <p class="prod-desc">100&nbsp;% naturel avec truffe noire hachée et huile essentielle à la truffe — un jambon d'exception pour les grandes occasions.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--aop">AOP</span>
+            </div>
+            <h3 class="prod-name">San Daniele</h3>
+            <p class="prod-desc">Cuisses séchées minimum 14 mois dans les collines du Frioul — couleur rouge rosé, parfum intense, plus doux que le Parme.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Incontournable</span>
+            </div>
+            <h3 class="prod-name">Guanciale Sorrentino</h3>
+            <p class="prod-desc">Spécialité de joues de porc — l'ingrédient secret et irremplaçable de la vraie carbonara et de l'amatriciana romaines.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥩</span>
+              <span class="prod-badge prod-badge--spec">Alto Adige</span>
+            </div>
+            <h3 class="prod-name">Speck</h3>
+            <p class="prod-desc">Viande séchée typique de l'Alto Adige et du Tirol, fumée aux herbes alpines — la charcuterie du nord de l'Italie.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SAUCES & ÉPICES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="sauces" class="cat-section page-section" aria-labelledby="title-sauces">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1509190985523-a278b0c62ec7?auto=format&fit=crop&w=800&q=80"
+            alt="Sauces et condiments italiens artisanaux" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Les saveurs de vacances</span>
+            <h2 class="section-title" id="title-sauces">Sauces & Épices</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              L'Italie gastronomique, c'est mille sauces pour accompagner vos plats.
+              Notre sélection originale de produits haut de gamme apportera en toute
+              saison une note ensoleillée à votre table&nbsp;!
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫙</span>
+              <span class="prod-badge prod-badge--spec">Artisanale</span>
+            </div>
+            <h3 class="prod-name">Sauce Arrabiata</h3>
+            <p class="prod-desc">Tomates San Marzano, ail et piment calabrais — une sauce qui réveille les papilles sans les brûler.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫙</span>
+              <span class="prod-badge prod-badge--spec">Artisanale</span>
+            </div>
+            <h3 class="prod-name">Sauce Puttanesca</h3>
+            <p class="prod-desc">Tomates, olives noires, câpres et anchois — la sauce des marins napolitains, généreuse et iodée.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫙</span>
+              <span class="prod-badge prod-badge--spec">Artisanale</span>
+            </div>
+            <h3 class="prod-name">Base Carbonara</h3>
+            <p class="prod-desc">Guanciale et pecorino préparés à la romaine — il ne reste plus qu'à cuire vos spaghetti et ajouter l'œuf.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🌿</span>
+              <span class="prod-badge prod-badge--spec">Gênes</span>
+            </div>
+            <h3 class="prod-name">Pesto Genovese</h3>
+            <p class="prod-desc">Basilic DOP de Ligurie, pignons, ail, parmesan et huile d'olive — la recette originale, sans concession.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🌶️</span>
+              <span class="prod-badge prod-badge--spec">Calabre</span>
+            </div>
+            <h3 class="prod-name">Nduja de Calabre</h3>
+            <p class="prod-desc">Saucisse à tartiner au piment fort — une bombe de saveur qui fond sur la pizza ou dans les pâtes.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🫙</span>
+              <span class="prod-badge prod-badge--spec">Épicerie</span>
+            </div>
+            <h3 class="prod-name">Épices & condiments</h3>
+            <p class="prod-desc">Câpres de Pantelleria, tomates séchées, olives marinées, origan de Sicile, sel aux herbes… et bien plus.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         CAFFÈ E DOLCE
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="caffe" class="cat-section page-section" aria-labelledby="title-caffe">
+      <div class="section-inner">
+
+        <div class="cat-intro reveal">
+          <img class="cat-intro-img"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+            alt="Café espresso et douceurs italiennes" loading="lazy">
+          <div class="cat-intro-text">
+            <span class="section-tag">Savoir conclure un repas</span>
+            <h2 class="section-title" id="title-caffe">Caffè e Dolce</h2>
+            <div class="section-divider"></div>
+            <p class="cat-desc">
+              Un repas italien sans un « caffè e dolce » serait incomplet. Vous trouverez
+              dans notre épicerie tous les ingrédients propices à terminer votre repas
+              sous le charme de l'Italie&nbsp;! En grain ou en capsule, nous vous
+              proposons une gamme de cafés intenses et parfumés — le caffè, une véritable
+              institution italienne.
+            </p>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">☕</span>
+              <span class="prod-badge prod-badge--spec">Torréfié</span>
+            </div>
+            <h3 class="prod-name">Espresso Naples</h3>
+            <p class="prod-desc">Mélange tradition napolitaine — intense, velouté, crème brune dorée inimitable. En grains ou moulu.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">☕</span>
+              <span class="prod-badge prod-badge--spec">Torréfié</span>
+            </div>
+            <h3 class="prod-name">Caffè arabica doux</h3>
+            <p class="prod-desc">100&nbsp;% arabica d'altitude, notes de caramel et noisette — pour un espresso sans amertume.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">☕</span>
+              <span class="prod-badge prod-badge--spec">Capsules</span>
+            </div>
+            <h3 class="prod-name">Caffè en capsules</h3>
+            <p class="prod-desc">Sélection de capsules compatibles avec les machines du marché — intensité et arômes italiens garantis.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍮</span>
+              <span class="prod-badge prod-badge--maison">Maison</span>
+            </div>
+            <h3 class="prod-name">Tiramisu</h3>
+            <p class="prod-desc">Préparé sur place : savoiardi imbibés, mascarpone Brescia aérien, cacao — la recette classique.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🥐</span>
+              <span class="prod-badge prod-badge--spec">Sicile</span>
+            </div>
+            <h3 class="prod-name">Cannoli siciliens</h3>
+            <p class="prod-desc">Tubes de pâte frite croustillante fourrés à la ricotta sucrée et éclats de chocolat — à croquer sur place.</p>
+          </article>
+          <article class="prod-card reveal reveal-d3">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍮</span>
+              <span class="prod-badge prod-badge--spec">Artisanal</span>
+            </div>
+            <h3 class="prod-name">Panna cotta</h3>
+            <p class="prod-desc">Onctueuse et légère, au coulis de fruits rouges ou au caramel salé — la finesse piémontaise.</p>
+          </article>
+          <article class="prod-card reveal reveal-d1">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍨</span>
+              <span class="prod-badge prod-badge--spec">Artisanal</span>
+            </div>
+            <h3 class="prod-name">Semifreddo</h3>
+            <p class="prod-desc">Mi-glace mi-mousse : pistache de Bronte, noisette du Piémont ou chocolat noir de Modica.</p>
+          </article>
+          <article class="prod-card reveal reveal-d2">
+            <div class="prod-card-top">
+              <span class="prod-emoji" aria-hidden="true">🍪</span>
+              <span class="prod-badge prod-badge--spec">Épicerie</span>
+            </div>
+            <h3 class="prod-name">Biscuits & douceurs</h3>
+            <p class="prod-desc">Amaretti, cantuccini, brutti ma buoni, ricciarelli — pour accompagner un caffè ou un verre de vin doux.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/nav.js"></script>
+  <script>
+    /* ── Navigation catégorie ──────────────────────────────────── */
+    const catNav   = document.getElementById('cat-nav');
+    const buttons  = catNav.querySelectorAll('.cat-btn');
+    const sections = [...buttons].map(b => document.getElementById(b.dataset.target));
+
+    function setActive(id) {
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        const offset = (document.querySelector('.site-header')?.offsetHeight ?? 80)
+                     + catNav.offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        setActive(btn.dataset.target);
+      });
+    });
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+
+    sections.forEach(s => s && sectionObserver.observe(s));
+
+    /* ── Scroll reveal ─────────────────────────────────────────── */
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sapori d'Italia — Épicerie fine italienne à Biscarrosse-Plage</title>
+  <meta name="description" content="Sapori d'Italia, épicerie fine italienne à Biscarrosse-Plage. Pâtes fraîches confectionnées sur place, pizzas, huiles d'olive, fromages, charcuterie et spiritueux artisanaux.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+
+    /* ── UTILITAIRES PAGE ───────────────────────────────────────── */
+
+    .page-section {
+      padding: 4rem 1.25rem;
+    }
+
+    .section-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .section-inner--wide {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-primary);
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.3rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      margin: 1.25rem 0;
+    }
+
+    .text-center { text-align: center; }
+    .section-divider.mx-auto { margin-left: auto; margin-right: auto; }
+
+
+    /* ── 1. HERO ────────────────────────────────────────────────── */
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--header-height));
+      min-height: calc(100svh - var(--header-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      animation: kenBurns 10s ease-out forwards;
+    }
+
+    @keyframes kenBurns {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 2rem 1.25rem;
+      max-width: 52rem;
+      animation: heroFadeIn 0.9s ease 0.2s both;
+    }
+
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(1.5rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-cursive);
+      font-size: clamp(2rem, 7vw, 4.25rem);
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(0.9rem, 2.5vw, 1.125rem);
+      color: rgba(255, 255, 255, 0.88);
+      letter-spacing: 0.04em;
+      margin-bottom: 2.25rem;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      box-shadow: 0 8px 32px rgba(212, 165, 116, 0.6);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-cta:hover {
+      background: #c8955f;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(212, 165, 116, 0.7);
+    }
+
+
+    /* ── 2. INTRO ───────────────────────────────────────────────── */
+
+    .intro {
+      background: var(--color-cream);
+    }
+
+    .intro-lead {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.5vw, 1.1875rem);
+      color: var(--color-dark-text);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .highlight-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border-sm);
+    }
+
+    .highlight-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .highlight-body h3 {
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      margin-bottom: 0.3rem;
+    }
+
+    .highlight-body p {
+      font-family: var(--font-serif);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      line-height: 1.65;
+    }
+
+
+    /* ── 3. À EMPORTER ──────────────────────────────────────────── */
+
+    .emporter {
+      background: var(--color-white);
+    }
+
+    .emporter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .emporter-card {
+      padding: 2rem 1.5rem;
+      background: var(--color-cream);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border-sm);
+      text-align: center;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .emporter-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.09);
+      border-color: var(--color-primary);
+    }
+
+    .emporter-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .emporter-card h3 {
+      font-family: var(--font-cursive);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.625rem;
+    }
+
+    .emporter-card p {
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+
+    /* ── 4. CATÉGORIES ──────────────────────────────────────────── */
+
+    .categories {
+      background: var(--color-cream);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.875rem;
+      margin-top: 2rem;
+    }
+
+    .cat-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.125rem 1rem;
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.22);
+      border-color: var(--color-primary);
+      background: rgba(212, 165, 116, 0.06);
+    }
+
+    .cat-card-emoji {
+      font-size: 1.625rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .cat-card-label {
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+
+    /* ── 5. CONTACT RAPIDE ──────────────────────────────────────── */
+
+    .contact-rapide {
+      background: var(--color-white);
+    }
+
+    .contact-box {
+      background: var(--color-cream);
+      border-radius: var(--radius-card);
+      border: 2px solid var(--color-border);
+      padding: 2rem 1.5rem;
+    }
+
+    .contact-rapide-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .wa-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: var(--color-whatsapp);
+      color: var(--color-white);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.38);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .wa-cta:hover {
+      background: #20bd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .wa-cta svg {
+      width: 1.375rem;
+      height: 1.375rem;
+      flex-shrink: 0;
+    }
+
+
+    /* ── ANIMATIONS SCROLL ──────────────────────────────────────── */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.75rem);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.18s; }
+    .reveal-d3 { transition-delay: 0.28s; }
+    .reveal-d4 { transition-delay: 0.38s; }
+
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+    @media (min-width: 640px) {
+      .highlights-grid     { grid-template-columns: 1fr 1fr; }
+      .emporter-grid       { grid-template-columns: repeat(3, 1fr); }
+      .categories-grid     { grid-template-columns: repeat(3, 1fr); }
+      .contact-rapide-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .page-section    { padding: 5.5rem 2rem; }
+      .categories-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation injectée par nav.js -->
+  <div id="header"></div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         1. HERO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="hero" aria-label="Bienvenue chez Sapori d'Italia">
+      <div class="hero-bg" role="img" aria-label="Épicerie italienne"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">L'épicerie fine au&nbsp;tempérament méditerranéen</h1>
+        <p class="hero-subtitle">Produits artisanaux italiens&nbsp;• Pâtes fraîches&nbsp;• Pizzas&nbsp;• Épicerie</p>
+        <a class="hero-cta" href="/menu/">🍽&nbsp;Découvrir notre menu</a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         2. INTRO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="intro page-section" aria-labelledby="intro-title">
+      <div class="section-inner">
+
+        <span class="section-tag reveal">Notre épicerie</span>
+        <h2 class="section-title reveal reveal-d1" id="intro-title">
+          La gastronomie italienne au cœur de Biscarrosse
+        </h2>
+        <div class="section-divider reveal reveal-d2"></div>
+
+        <p class="intro-lead reveal reveal-d2">
+          Sapori d'Italia vous propose de surprendre vos invités en égayant vos tables
+          de produits issus de la gastronomie italienne. Installée à Biscarrosse-Plage,
+          entre l'océan Atlantique et les lacs landais, notre épicerie fine vous fait
+          voyager au cœur des saveurs et traditions de la botte.
+        </p>
+
+        <div class="highlights-grid">
+          <div class="highlight-card reveal reveal-d1">
+            <span class="highlight-icon" aria-hidden="true">🍝</span>
+            <div class="highlight-body">
+              <h3>Pâtes fraîches</h3>
+              <p>Confectionnées sur place chaque matin, classiques ou farcies, selon les recettes authentiques de nos partenaires.</p>
+            </div>
+          </div>
+          <div class="highlight-card reveal reveal-d2">
+            <span class="highlight-icon" aria-hidden="true">🫒</span>
+            <div class="highlight-body">
+              <h3>Huiles d'olive</h3>
+              <p>Première pression à froid, issues de domaines familiaux italiens sélectionnés pour leur caractère et leur fraîcheur.</p>
+            </div>
+          </div>
+          <div class="highlight-card reveal reveal-d3">
+            <span class="highlight-icon" aria-hidden="true">🍷</span>
+            <div class="highlight-body">
+              <h3>Vins & spiritueux</h3>
+              <p>Prosecco, Limoncello, Grappa et vins de vignerons indépendants — une cave soigneusement constituée.</p>
+            </div>
+          </div>
+          <div class="highlight-card reveal reveal-d4">
+            <span class="highlight-icon" aria-hidden="true">☕</span>
+            <div class="highlight-body">
+              <h3>Caffè & spiritueux</h3>
+              <p>Cafés à la torréfaction étudiée pour le parfait espresso, vins et spiritueux italiens soigneusement sélectionnés.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         3. À EMPORTER
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="emporter page-section" aria-labelledby="emporter-title">
+      <div class="section-inner">
+
+        <span class="section-tag reveal">Sur place & à emporter</span>
+        <h2 class="section-title reveal reveal-d1" id="emporter-title">
+          Nos spécialités du moment
+        </h2>
+        <div class="section-divider reveal reveal-d2"></div>
+
+        <div class="emporter-grid">
+          <article class="emporter-card reveal reveal-d1">
+            <span class="emporter-emoji" aria-hidden="true">🍝</span>
+            <h3>Pâtes fraîches</h3>
+            <p>Classiques ou farcies, confectionnées sur place chaque jour avec les meilleurs ingrédients importés d'Italie.</p>
+          </article>
+          <article class="emporter-card reveal reveal-d2">
+            <span class="emporter-emoji" aria-hidden="true">🍕</span>
+            <h3>Pinsa Romana</h3>
+            <p>La pizza légère et croustillante à la romaine, à base de farine de riz et de soja pour une pâte digeste et parfumée.</p>
+          </article>
+          <article class="emporter-card reveal reveal-d3">
+            <span class="emporter-emoji" aria-hidden="true">🧀</span>
+            <h3>Plateaux variés</h3>
+            <p>Charcuterie, fromages, antipasti généreux — à déguster sur place ou à emporter directement à la plage.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         4. CATÉGORIES
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="categories page-section" aria-labelledby="categories-title">
+      <div class="section-inner--wide">
+
+        <div class="section-inner" style="padding:0">
+          <span class="section-tag reveal">Notre sélection</span>
+          <h2 class="section-title reveal reveal-d1" id="categories-title">
+            Explorer notre épicerie
+          </h2>
+          <div class="section-divider reveal reveal-d2"></div>
+        </div>
+
+        <div class="categories-grid">
+          <a class="cat-card reveal reveal-d1" href="/gastronomie.html#pates">
+            <span class="cat-card-emoji" aria-hidden="true">🍝</span>
+            <span class="cat-card-label">Les pâtes</span>
+          </a>
+          <a class="cat-card reveal reveal-d2" href="/gastronomie.html#pizzas">
+            <span class="cat-card-emoji" aria-hidden="true">🍕</span>
+            <span class="cat-card-label">Les pizzas</span>
+          </a>
+          <a class="cat-card reveal reveal-d3" href="/gastronomie.html#huiles">
+            <span class="cat-card-emoji" aria-hidden="true">🫒</span>
+            <span class="cat-card-label">Les huiles</span>
+          </a>
+          <a class="cat-card reveal reveal-d1" href="/gastronomie.html#fromages">
+            <span class="cat-card-emoji" aria-hidden="true">🧀</span>
+            <span class="cat-card-label">Les fromages</span>
+          </a>
+          <a class="cat-card reveal reveal-d2" href="/gastronomie.html#charcuterie">
+            <span class="cat-card-emoji" aria-hidden="true">🥩</span>
+            <span class="cat-card-label">La charcuterie</span>
+          </a>
+          <a class="cat-card reveal reveal-d3" href="/gastronomie.html#sauces">
+            <span class="cat-card-emoji" aria-hidden="true">🫙</span>
+            <span class="cat-card-label">Sauces & épices</span>
+          </a>
+          <a class="cat-card reveal reveal-d1" href="/gastronomie.html#caffe">
+            <span class="cat-card-emoji" aria-hidden="true">☕</span>
+            <span class="cat-card-label">Caffè e dolce</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         5. CONTACT RAPIDE
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="contact-rapide page-section" aria-labelledby="contact-title">
+      <div class="section-inner">
+
+        <div class="text-center">
+          <span class="section-tag reveal">Nous trouver</span>
+          <h2 class="section-title reveal reveal-d1" id="contact-title">On est là pour vous</h2>
+          <div class="section-divider mx-auto reveal reveal-d2"></div>
+        </div>
+
+        <div class="contact-box reveal">
+          <div class="contact-rapide-grid">
+
+            <div class="contact-card">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Adresse</span>
+                <span class="contact-value">210 Avenue de la Plage<br>40600 Biscarrosse-Plage</span>
+              </div>
+            </div>
+
+            <a class="contact-card" href="tel:+33685492251">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07
+                  A19.5 19.5 0 013.07 11 19.79 19.79 0 010 2.18a2 2 0 012-.18h3
+                  a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11
+                  L6.91 9.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45
+                  c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Téléphone</span>
+                <span class="contact-value">06 85 49 22 51<br>06 19 21 98 54</span>
+              </div>
+            </a>
+
+            <a class="contact-card" href="mailto:epiceriemartone@gmail.com">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4
+                  c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">E-mail</span>
+                <span class="contact-value">epiceriemartone@gmail.com</span>
+              </div>
+            </a>
+
+          </div>
+
+          <a class="wa-cta" href="https://wa.me/33685492251"
+            target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099
+                -.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223
+                -.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761
+                -1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446
+                -.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075
+                -.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008
+                -.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016
+                -1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2
+                5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871
+                .118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173
+                -1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87
+                0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86
+                9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0
+                5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45
+                -4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05
+                0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945
+                L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005
+                c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Nous écrire sur WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer + bouton WhatsApp flottant injectés par nav.js -->
+  <div id="footer"></div>
+
+  <script src="/nav.js"></script>
+  <script>
+    /* Scroll reveal via IntersectionObserver */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
