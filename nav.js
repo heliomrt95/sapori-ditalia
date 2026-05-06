@@ -2,27 +2,27 @@
   'use strict';
 
   /* ── Constantes ──────────────────────────────────────────────── */
-  const LOGO_SRC = '/assets/logo2.png';
+  const LOGO_SRC = 'assets/logo2.png';
   const LOGO_ALT = "Sapori d'Italia";
   const WA_URL   = 'https://wa.me/33685492251';
 
   const NAV_ITEMS = [
-    { label: 'Accueil',        href: '/index.html' },
-    { label: 'Notre Histoire', href: '/notre-histoire.html' },
+    { label: 'Accueil',        href: 'index.html' },
+    { label: 'Notre Histoire', href: 'notre-histoire.html' },
     {
-      label: 'Gastronomie', href: '/gastronomie.html',
+      label: 'Gastronomie', href: 'gastronomie.html',
       dropdown: [
-        { label: 'Pâtes',           href: '/gastronomie.html#pates' },
-        { label: 'Pizzas',          href: '/gastronomie.html#pizzas' },
-        { label: 'Huiles',          href: '/gastronomie.html#huiles' },
-        { label: 'Fromages',        href: '/gastronomie.html#fromages' },
-        { label: 'Charcuterie',     href: '/gastronomie.html#charcuterie' },
-        { label: 'Sauces & Épices', href: '/gastronomie.html#sauces' },
-        { label: 'Caffè e Dolce',   href: '/gastronomie.html#caffe' },
+        { label: 'Pâtes',           href: 'gastronomie.html#pates' },
+        { label: 'Pizzas',          href: 'gastronomie.html#pizzas' },
+        { label: 'Huiles',          href: 'gastronomie.html#huiles' },
+        { label: 'Fromages',        href: 'gastronomie.html#fromages' },
+        { label: 'Charcuterie',     href: 'gastronomie.html#charcuterie' },
+        { label: 'Sauces & Épices', href: 'gastronomie.html#sauces' },
+        { label: 'Caffè e Dolce',   href: 'gastronomie.html#caffe' },
       ]
     },
-    { label: 'Spiritueux',   href: '/spiritueux.html' },
-    { label: '🍽 Notre Menu', href: '/menu/', cta: true },
+    { label: 'Spiritueux',   href: 'spiritueux.html' },
+    { label: '🍽 Notre Menu', href: 'menu/', cta: true },
   ];
 
   /* ── Icônes SVG inline ───────────────────────────────────────── */
@@ -83,9 +83,12 @@
   /* ── Lien actif ──────────────────────────────────────────────── */
   function isActive(href) {
     const path = window.location.pathname;
-    if (href === '/index.html') return path === '/' || path === '/index.html';
-    const base = href.replace(/\.html$/, '').replace(/\/$/, '');
-    return path.startsWith(base);
+    const name = href.replace(/^\//, '');
+    if (!name || name === 'index.html') {
+      return path === '/' || path.endsWith('/') || path.endsWith('/index.html');
+    }
+    const base = name.replace(/\.html$/, '').replace(/\/$/, '');
+    return path.endsWith('/' + base + '.html') || path.endsWith('/' + base + '/') || path.endsWith('/' + base);
   }
 
   /* ── Construction du header ──────────────────────────────────── */
@@ -113,7 +116,7 @@
     return `
       <header class="site-header">
         <div class="header-inner">
-          <a class="logo-link" href="/index.html" aria-label="Accueil — Sapori d'Italia">
+          <a class="logo-link" href="index.html" aria-label="Accueil — Sapori d'Italia">
             <img class="site-logo" src="${LOGO_SRC}" alt="${LOGO_ALT}" width="160">
           </a>
           <nav class="main-nav" aria-label="Navigation principale">
@@ -166,7 +169,7 @@
           </div>
 
           <div class="footer-menu-cta">
-            <a class="btn-primary" href="/menu/">🍽&nbsp;Voir notre menu</a>
+            <a class="btn-primary" href="menu/">🍽&nbsp;Voir notre menu</a>
           </div>
 
           <div class="footer-copyright">
