@@ -117,7 +117,7 @@
       <header class="site-header">
         <div class="header-inner">
           <a class="logo-link" href="index.html" aria-label="Accueil — Sapori d'Italia">
-            <img class="site-logo" src="${LOGO_SRC}" alt="${LOGO_ALT}" width="160">
+            <img class="site-logo" src="${LOGO_SRC}" alt="${LOGO_ALT}" width="160" loading="lazy">
           </a>
           <nav class="main-nav" aria-label="Navigation principale">
             <button class="nav-toggle" id="nav-toggle"

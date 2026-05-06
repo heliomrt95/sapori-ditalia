@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable — Sapori d'Italia</title>
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .error-page {
+      min-height: calc(100vh - var(--header-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-cream);
+      padding: 4rem 1.25rem;
+      text-align: center;
+    }
+
+    .error-inner {
+      max-width: 32rem;
+    }
+
+    .error-code {
+      font-family: var(--font-cursive);
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .error-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .error-text {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main>
+    <section class="error-page">
+      <div class="error-inner">
+        <p class="error-code">404</p>
+        <h1 class="error-title">Page introuvable</h1>
+        <p class="error-text">
+          Cette page n'existe pas ou a été déplacée.<br>
+          Retournez à l'accueil pour continuer votre exploration.
+        </p>
+        <div class="error-actions">
+          <a class="btn-primary" href="index.html">Retour à l'accueil</a>
+          <a class="btn-secondary" href="gastronomie.html">Voir nos produits</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="nav.js"></script>
+</body>
+</html>
